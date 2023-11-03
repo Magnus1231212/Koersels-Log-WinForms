@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32002.185
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kørsels Log", "Kørsels Log\Kørsels Log.csproj", "{08F7077E-773C-497C-8E56-6E5425BFFFD2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08F7077E-773C-497C-8E56-6E5425BFFFD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08F7077E-773C-497C-8E56-6E5425BFFFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08F7077E-773C-497C-8E56-6E5425BFFFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08F7077E-773C-497C-8E56-6E5425BFFFD2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1334EC6B-3F15-451A-ADED-45D8CCBFA799}
+	EndGlobalSection
+EndGlobal
