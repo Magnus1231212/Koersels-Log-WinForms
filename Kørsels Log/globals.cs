@@ -12,6 +12,10 @@ namespace Kørsels_Log
     {
         public static bool Debug = false;
         public static int UserID { get; set; }
+        public static string UserName { get; set; }
+        public static int IsAdmin { get; set; }
+
+
 
         public static string ConnectionString
         {
