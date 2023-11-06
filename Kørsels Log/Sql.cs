@@ -9,7 +9,7 @@ namespace Kørsels_Log
 {
     internal class Sql
     {
-        static void Load()
+        public static void Load()
         {
             using (SqlConnection con = Globals.GetOpenConnection())
             {
@@ -29,56 +29,32 @@ namespace Kørsels_Log
         }
 
         static private string Script = @"
-            -- Oprettelse af databasen
-            use master;
-            IF OBJECT_ID ('dbo.skole_data_main', 'U') IS NOT NULL
-            DROP DATABASE skole_data_main;
+			IF OBJECT_ID(N'admins', N'U') IS NOT NULL
+            TRUNCATE TABLE admins
+            IF OBJECT_ID(N'users', N'U') IS NOT NULL
+            TRUNCATE TABLE users;
+			IF OBJECT_ID(N'logs', N'U') IS NOT NULL
+            TRUNCATE TABLE logs;
 
-            go
-
-            CREATE DATABASE skole_data_main;
-            go
-
-            use skole_data_main;
-
-            -- Oprettelse af tabel klasse
-            CREATE TABLE klasse (
+            IF OBJECT_ID(N'admins', N'U') IS NULL
+            CREATE TABLE admins (
                 klasse_id int NOT NULL,
                 klasse varchar(255) NOT NULL,
                 PRIMARY KEY (klasse_id)
             );
 
-            -- Oprettelse af tabel post_nr_by
-            CREATE TABLE post_nr_by (
+			IF OBJECT_ID(N'users', N'U') IS NULL
+            CREATE TABLE users (
+                klasse_id int NOT NULL,
+                klasse varchar(255) NOT NULL,
+                PRIMARY KEY (klasse_id)
+            );
+
+            IF OBJECT_ID(N'logs', N'U') IS NULL
+            CREATE TABLE logs (
                 post_nr int NOT NULL,
                 by_navn varchar(255) NOT NULL,
                 PRIMARY KEY (post_nr)
-            );
-
-            -- Oprettelse af tabel elev
-            CREATE TABLE elev (
-                elev_id int NOT NULL,
-                fornavn varchar(255) NOT NULL,
-                efternavn varchar(255) NOT NULL,
-                adresse varchar(255) NOT NULL,
-                post_nr int NOT NULL,
-                klasse_id int NOT NULL,
-                PRIMARY KEY (elev_id),
-                FOREIGN KEY (post_nr) REFERENCES post_nr_by (post_nr),
-                FOREIGN KEY (klasse_id) REFERENCES klasse (klasse_id)
-            );
-
-            -- Oprettelse af tabel laerer
-            CREATE TABLE laerer (
-                laerer_id int NOT NULL,
-                fornavn varchar(255) NOT NULL,
-                efternavn varchar(255) NOT NULL,
-                adresse varchar(255) NOT NULL,
-                post_nr int NOT NULL,
-                klasse_id int NOT NULL,
-                PRIMARY KEY (laerer_id),
-                FOREIGN KEY (post_nr) REFERENCES post_nr_by (post_nr),
-                FOREIGN KEY (klasse_id) REFERENCES klasse (klasse_id)
             );
         ";
     }
