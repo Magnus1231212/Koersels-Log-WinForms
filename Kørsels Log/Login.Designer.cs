@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             label1 = new Label();
-            button1 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            checkBox1 = new CheckBox();
+            login_btn = new Button();
+            Username_textBox = new TextBox();
+            Password_textBox = new TextBox();
+            RememberMe = new CheckBox();
             SuspendLayout();
             // 
             // label1
@@ -48,57 +48,58 @@
             label1.Text = "Velkommen tilbage";
             label1.Click += label1_Click;
             // 
-            // button1
+            // login_btn
             // 
-            button1.BackColor = Color.FromArgb(89, 100, 242);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(49, 268);
-            button1.Name = "button1";
-            button1.Size = new Size(327, 31);
-            button1.TabIndex = 1;
-            button1.Text = "Log ind";
-            button1.UseVisualStyleBackColor = false;
+            login_btn.BackColor = Color.FromArgb(89, 100, 242);
+            login_btn.FlatAppearance.BorderSize = 0;
+            login_btn.FlatStyle = FlatStyle.Flat;
+            login_btn.ForeColor = Color.White;
+            login_btn.Location = new Point(49, 268);
+            login_btn.Name = "login_btn";
+            login_btn.Size = new Size(327, 31);
+            login_btn.TabIndex = 1;
+            login_btn.Text = "Log ind";
+            login_btn.UseVisualStyleBackColor = false;
+            login_btn.Click += login_Click;
             // 
-            // textBox1
+            // Username_textBox
             // 
-            textBox1.BackColor = Color.FromArgb(30, 31, 34);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(49, 131);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Username";
-            textBox1.Size = new Size(327, 26);
-            textBox1.TabIndex = 2;
+            Username_textBox.BackColor = Color.FromArgb(30, 31, 34);
+            Username_textBox.BorderStyle = BorderStyle.None;
+            Username_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Username_textBox.ForeColor = Color.White;
+            Username_textBox.Location = new Point(49, 131);
+            Username_textBox.Name = "Username_textBox";
+            Username_textBox.PlaceholderText = "Username";
+            Username_textBox.Size = new Size(327, 26);
+            Username_textBox.TabIndex = 2;
             // 
-            // textBox2
+            // Password_textBox
             // 
-            textBox2.BackColor = Color.FromArgb(30, 31, 34);
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.ForeColor = Color.White;
-            textBox2.Location = new Point(49, 173);
-            textBox2.Name = "textBox2";
-            textBox2.PasswordChar = '*';
-            textBox2.PlaceholderText = "Password";
-            textBox2.Size = new Size(327, 26);
-            textBox2.TabIndex = 3;
+            Password_textBox.BackColor = Color.FromArgb(30, 31, 34);
+            Password_textBox.BorderStyle = BorderStyle.None;
+            Password_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Password_textBox.ForeColor = Color.White;
+            Password_textBox.Location = new Point(49, 173);
+            Password_textBox.Name = "Password_textBox";
+            Password_textBox.PasswordChar = '*';
+            Password_textBox.PlaceholderText = "Password";
+            Password_textBox.Size = new Size(327, 26);
+            Password_textBox.TabIndex = 3;
             // 
-            // checkBox1
+            // RememberMe
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.BackColor = Color.Transparent;
-            checkBox1.FlatAppearance.BorderSize = 0;
-            checkBox1.FlatStyle = FlatStyle.Flat;
-            checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(49, 205);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(101, 19);
-            checkBox1.TabIndex = 4;
-            checkBox1.Text = "Remember me";
-            checkBox1.UseVisualStyleBackColor = false;
+            RememberMe.AutoSize = true;
+            RememberMe.BackColor = Color.Transparent;
+            RememberMe.FlatAppearance.BorderSize = 0;
+            RememberMe.FlatStyle = FlatStyle.Flat;
+            RememberMe.ForeColor = Color.White;
+            RememberMe.Location = new Point(49, 205);
+            RememberMe.Name = "RememberMe";
+            RememberMe.Size = new Size(101, 19);
+            RememberMe.TabIndex = 4;
+            RememberMe.Text = "Remember me";
+            RememberMe.UseVisualStyleBackColor = false;
             // 
             // Login
             // 
@@ -106,16 +107,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 47, 51);
             ClientSize = new Size(427, 408);
-            Controls.Add(checkBox1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(button1);
+            Controls.Add(RememberMe);
+            Controls.Add(Password_textBox);
+            Controls.Add(Username_textBox);
+            Controls.Add(login_btn);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Login";
             Text = "Login - Kørsels Log";
+            Load += Login_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -123,9 +125,9 @@
         #endregion
 
         private Label label1;
-        private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private CheckBox checkBox1;
+        private Button login_btn;
+        private TextBox Username_textBox;
+        private TextBox Password_textBox;
+        private CheckBox RememberMe;
     }
 }

@@ -57,6 +57,8 @@ namespace Kørsels_Log
                 WhereFrom varchar(255),
                 WhereTo varchar(255)
             );
+
+            INSERT INTO users (UserID, UserName, Password) VALUES (1, 'Nolfi', '123')
         ";
     }
 }

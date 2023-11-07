@@ -10,7 +10,7 @@ namespace Kørsels_Log
 {
     class Globals
     {
-        public static bool Debug = true;
+        public static bool Debug = false;
         public static int UserID { get; set; }
         public static string? UserName { get; set; }
         public static int IsAdmin { get; set; }
@@ -36,6 +36,22 @@ namespace Kørsels_Log
                     MessageBox.Show("Error: " + e.Message);
             }
             return sqlConn;
+        }
+
+        public static bool TestCon()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(Globals.ConnectionString))
+                {
+                    connection.Open();
+                    return true;
+                }
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
         }
     }
 }
