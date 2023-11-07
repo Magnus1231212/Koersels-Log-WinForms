@@ -38,23 +38,24 @@ namespace Kørsels_Log
 
             IF OBJECT_ID(N'admins', N'U') IS NULL
             CREATE TABLE admins (
-                klasse_id int NOT NULL,
-                klasse varchar(255) NOT NULL,
-                PRIMARY KEY (klasse_id)
+                AdminID int NOT NULL primary key,
+                UserName varchar(255),
+                Password varchar(255)
             );
 
 			IF OBJECT_ID(N'users', N'U') IS NULL
             CREATE TABLE users (
-                klasse_id int NOT NULL,
-                klasse varchar(255) NOT NULL,
-                PRIMARY KEY (klasse_id)
+                UserID int NOT NULL primary key,
+                UserName varchar(255),
+                Password varchar(255)
             );
 
             IF OBJECT_ID(N'logs', N'U') IS NULL
             CREATE TABLE logs (
-                post_nr int NOT NULL,
-                by_navn varchar(255) NOT NULL,
-                PRIMARY KEY (post_nr)
+                LogID int NOT NULL primary key,
+                UserID int NOT NULL,
+                WhereFrom varchar(255),
+                WhereTo varchar(255)
             );
         ";
     }
