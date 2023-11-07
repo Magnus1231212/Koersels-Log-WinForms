@@ -36,7 +36,6 @@ namespace Kørsels_Log
                         command.Parameters.AddWithValue("@Password", SPassword.ToString());
 
                         SqlDataAdapter userAdapter = new SqlDataAdapter(command);
-                        
                         userAdapter.Fill(SuserTabel);
                     }
 
@@ -52,15 +51,13 @@ namespace Kørsels_Log
 
                 if (SuserTabel.Rows.Count > 0)
                 {
-                    this.Visible = false;
-                    this.Hide();
+                    Hide();
                     Home home = new Home();
                     home.Show();
                 }
                 else if (SadminTabel.Rows.Count > 0)
                 {
-                    this.Visible = false;
-                    this.Hide();
+                    Hide();
                     Admin admin = new Admin();
                     admin.Show();
                 }
@@ -86,7 +83,6 @@ namespace Kørsels_Log
                 file.Close();
                 string[] saveData = new string[] { Username_textBox.Text + " " + Password_textBox.Text };
                 File.AppendAllLines(data, saveData);
-
             }
 
             DataTable userTabel = new DataTable();
