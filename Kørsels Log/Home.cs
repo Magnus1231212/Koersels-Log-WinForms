@@ -16,5 +16,15 @@ namespace Kørsels_Log
         {
             InitializeComponent();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Functions.LogOut();
+        }
+
+        private void Home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Functions.Exit();
+        }
     }
 }

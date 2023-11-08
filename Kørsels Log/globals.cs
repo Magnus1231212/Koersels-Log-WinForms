@@ -54,5 +54,11 @@ namespace Kørsels_Log
                 return false;
             }
         }
+
+        public static void CheckIfOpen()
+        {
+            if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly()?.Location)).Length > 1) 
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
     }
 }

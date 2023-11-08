@@ -15,7 +15,8 @@ namespace Kørsels_Log
         {
             string dataPath = Path.Combine(Application.UserAppDataPath, "data.txt");
 
-            if(File.Exists(dataPath)) {
+            if (File.Exists(dataPath))
+            {
                 string UserQuery = "SELECT * FROM users WHERE UserName = @UserName AND Password = @Password";
                 string AdminQuery = "SELECT * FROM admins WHERE UserName = @UserName AND Password = @Password";
 
@@ -110,8 +111,6 @@ namespace Kørsels_Log
                 }
             }
 
-            MessageBox.Show(userTabel.Rows.Count.ToString());
-
             if (userTabel.Rows.Count > 0)
             {
                 this.Hide();
@@ -130,6 +129,11 @@ namespace Kørsels_Log
                 Username_textBox.Clear();
                 Password_textBox.Clear();
             }
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Functions.Exit();
         }
     }
 }

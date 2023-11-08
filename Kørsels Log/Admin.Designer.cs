@@ -40,6 +40,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Admin";
             Text = "Admin";
+            FormClosing += Admin_FormClosing;
             ResumeLayout(false);
         }
 

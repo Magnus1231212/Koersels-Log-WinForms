@@ -16,5 +16,10 @@ namespace Kørsels_Log
         {
             InitializeComponent();
         }
+
+        private void Admin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Functions.Exit();
+        }
     }
 }

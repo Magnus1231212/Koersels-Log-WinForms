@@ -1,5 +1,6 @@
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 
 namespace Kørsels_Log
 {
@@ -8,6 +9,7 @@ namespace Kørsels_Log
         [STAThread]
         static void Main()
         {
+            Globals.CheckIfOpen();
             ApplicationConfiguration.Initialize();
             if (Globals.Debug) { Sql.Load(); MessageBox.Show("Debug mode is enabled"); } else
             {
@@ -19,6 +21,5 @@ namespace Kørsels_Log
             }
             Application.Run(new Login());
         }
-
     }
 }

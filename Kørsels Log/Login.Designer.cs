@@ -117,7 +117,8 @@
             MaximizeBox = false;
             Name = "Login";
             Text = "Login - Kørsels Log";
-            Load += Login_Load;
+            FormClosing += Login_FormClosing;
+            Shown += Login_Load;
             ResumeLayout(false);
             PerformLayout();
         }
