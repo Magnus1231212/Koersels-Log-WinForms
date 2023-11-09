@@ -34,7 +34,7 @@ namespace Kørsels_Log.src
             HideAll();
             Login login = new Login();
             login.Show();
-            string dataPath = Path.Combine(Application.UserAppDataPath, "data.txt");
+            string dataPath = Path.Combine(Application.UserAppDataPath, "data");
             File.Delete(dataPath);
         }
     }

@@ -14,7 +14,7 @@ namespace Kørsels_Log
 
         private void Login_Load(object sender, EventArgs e)
         {
-            string dataPath = Path.Combine(Application.UserAppDataPath, "data.txt");
+            string dataPath = Path.Combine(Application.UserAppDataPath, "data");
 
             if (File.Exists(dataPath))
             {
@@ -89,7 +89,7 @@ namespace Kørsels_Log
 
             if (RememberMe.Checked)
             {
-                string data = Path.Combine(path, "data.txt");
+                string data = Path.Combine(path, "data");
                 var file = File.Create(data);
                 file.Close();
                 string[] saveData = new string[] { Username_textBox.Text + " " + Password_textBox.Text };
