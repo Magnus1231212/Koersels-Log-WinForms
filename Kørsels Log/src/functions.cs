@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kørsels_Log
+namespace Kørsels_Log.src
 {
     class Functions
     {
@@ -24,8 +24,9 @@ namespace Kørsels_Log
             }));
         }
 
-        public static void Exit() { 
-            System.Environment.Exit(0);
+        public static void Exit()
+        {
+            Environment.Exit(0);
         }
 
         public static void LogOut()

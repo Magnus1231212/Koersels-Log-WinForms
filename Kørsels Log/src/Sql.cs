@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace Kørsels_Log
+namespace Kørsels_Log.src
 {
     internal class Sql
     {
@@ -22,7 +22,7 @@ namespace Kørsels_Log
                     catch (Exception e)
                     {
                         if (Globals.Debug)
-                        MessageBox.Show("Error: " + e.Message);
+                            MessageBox.Show("Error: " + e.Message);
                     }
                 }
             }

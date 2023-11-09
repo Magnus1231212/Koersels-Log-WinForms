@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 
-namespace Kørsels_Log
+namespace Kørsels_Log.src
 {
     class Globals
     {
@@ -43,7 +43,7 @@ namespace Kørsels_Log
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(Globals.ConnectionString))
+                using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                     connection.Open();
                     return true;
@@ -57,7 +57,7 @@ namespace Kørsels_Log
 
         public static void CheckIfOpen()
         {
-            if (System.Diagnostics.Process.GetProcessesByName(System.IO.Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly()?.Location)).Length > 1) 
+            if (System.Diagnostics.Process.GetProcessesByName(Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly()?.Location)).Length > 1)
                 System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
     }

@@ -1,6 +1,7 @@
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
+using Kørsels_Log.src;
 
 namespace Kørsels_Log
 {
