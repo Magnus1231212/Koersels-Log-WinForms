@@ -52,12 +52,21 @@ namespace Kørsels_Log
 
                 if (SuserTabel.Rows.Count > 0)
                 {
+                    Globals.UserID = Convert.ToInt32(SuserTabel.Rows[0]["UserID"]);
+                    Globals.UserName = SuserTabel.Rows[0]["UserName"].ToString();
+                    Globals.IsLoggedIn = true;
+
                     Hide();
                     Home home = new Home();
                     home.Show();
                 }
                 else if (SadminTabel.Rows.Count > 0)
                 {
+                    Globals.UserID = Convert.ToInt32(SadminTabel.Rows[0]["AdminID"]);
+                    Globals.UserName = SadminTabel.Rows[0]["UserName"].ToString();
+                    Globals.IsLoggedIn = true;
+                    Globals.IsAdmin = true;
+
                     Hide();
                     Admin admin = new Admin();
                     admin.Show();
@@ -113,12 +122,21 @@ namespace Kørsels_Log
 
             if (userTabel.Rows.Count > 0)
             {
+                Globals.UserID = Convert.ToInt32(userTabel.Rows[0]["UserID"]);
+                Globals.UserName = userTabel.Rows[0]["UserName"].ToString();
+                Globals.IsLoggedIn = true;
+
                 this.Hide();
                 Home home = new Home();
                 home.Show();
             }
             else if (adminTabel.Rows.Count > 0)
             {
+                Globals.UserID = Convert.ToInt32(adminTabel.Rows[0]["AdminID"]);
+                Globals.UserName = adminTabel.Rows[0]["UserName"].ToString();
+                Globals.IsLoggedIn = true;
+                Globals.IsAdmin = true;
+
                 this.Hide();
                 Admin admin = new Admin();
                 admin.Show();

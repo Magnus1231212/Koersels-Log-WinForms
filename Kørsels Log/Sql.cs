@@ -59,6 +59,7 @@ namespace Kørsels_Log
             );
 
             INSERT INTO users (UserID, UserName, Password) VALUES (1, 'Nolfi', '123')
+            INSERT INTO admins (AdminID, UserName, Password) VALUES (1, 'Nolfi', '123456')
         ";
     }
 }
