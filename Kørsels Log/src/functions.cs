@@ -38,4 +38,10 @@ namespace Kørsels_Log.src
             File.Delete(dataPath);
         }
     }
+
+    public class ListBoxItem
+    {
+        public int? Value { get; set; }
+        public string? Text { get; set; }
+    }
 }

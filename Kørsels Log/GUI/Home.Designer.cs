@@ -33,9 +33,10 @@
             label1 = new Label();
             listBox1 = new ListBox();
             label2 = new Label();
-            login_btn = new Button();
+            create_log = new Button();
             label3 = new Label();
             label4 = new Label();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -71,7 +72,6 @@
             listBox1.ForeColor = Color.White;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 20;
-            listBox1.Items.AddRange(new object[] { "ww", "www" });
             listBox1.Location = new Point(261, 69);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(284, 360);
@@ -90,18 +90,19 @@
             label2.Text = "Your Logs";
             label2.Click += label2_Click;
             // 
-            // login_btn
+            // create_log
             // 
-            login_btn.BackColor = Color.FromArgb(89, 100, 242);
-            login_btn.FlatAppearance.BorderSize = 0;
-            login_btn.FlatStyle = FlatStyle.Flat;
-            login_btn.ForeColor = Color.White;
-            login_btn.Location = new Point(12, 107);
-            login_btn.Name = "login_btn";
-            login_btn.Size = new Size(235, 31);
-            login_btn.TabIndex = 4;
-            login_btn.Text = "Create New Log";
-            login_btn.UseVisualStyleBackColor = false;
+            create_log.BackColor = Color.FromArgb(89, 100, 242);
+            create_log.FlatAppearance.BorderSize = 0;
+            create_log.FlatStyle = FlatStyle.Flat;
+            create_log.ForeColor = Color.White;
+            create_log.Location = new Point(12, 107);
+            create_log.Name = "create_log";
+            create_log.Size = new Size(235, 31);
+            create_log.TabIndex = 4;
+            create_log.Text = "Create New Log";
+            create_log.UseVisualStyleBackColor = false;
+            create_log.Click += create_log_Click;
             // 
             // label3
             // 
@@ -125,15 +126,30 @@
             label4.Size = new Size(533, 2);
             label4.TabIndex = 6;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(89, 100, 242);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(12, 159);
+            button1.Name = "button1";
+            button1.Size = new Size(235, 31);
+            button1.TabIndex = 7;
+            button1.Text = "Edit Selected Log";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 47, 51);
             ClientSize = new Size(557, 450);
+            Controls.Add(button1);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(login_btn);
+            Controls.Add(create_log);
             Controls.Add(label2);
             Controls.Add(listBox1);
             Controls.Add(label1);
@@ -156,8 +172,9 @@
         private Label label1;
         private ListBox listBox1;
         private Label label2;
-        private Button login_btn;
+        private Button create_log;
         private Label label3;
         private Label label4;
+        private Button button1;
     }
 }

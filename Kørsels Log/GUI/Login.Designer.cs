@@ -118,6 +118,7 @@
             Name = "Login";
             Text = "Login - Kørsels Log";
             FormClosing += Login_FormClosing;
+            Load += Login_Load_1;
             Shown += Login_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -60,6 +60,8 @@ namespace Kørsels_Log.src
 
             INSERT INTO users (UserID, UserName, Password) VALUES (1, 'Nolfi', '123')
             INSERT INTO admins (AdminID, UserName, Password) VALUES (1, 'Nolfi', '123456')
+
+            INSERT INTO logs (LogID, UserID, WhereFrom, WhereTo) VALUES (1, 1, 'Amstadam', 'Hamborg')
         ";
     }
 }
