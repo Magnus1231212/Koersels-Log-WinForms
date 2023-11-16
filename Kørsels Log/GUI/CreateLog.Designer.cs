@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateLog));
             create_log = new Button();
             label1 = new Label();
-            Username_textBox = new TextBox();
-            textBox1 = new TextBox();
+            from_textBox = new TextBox();
+            to_textBox = new TextBox();
             SuspendLayout();
             // 
             // create_log
@@ -61,29 +61,29 @@
             label1.TextAlign = ContentAlignment.TopCenter;
             label1.Click += label1_Click;
             // 
-            // Username_textBox
+            // from_textBox
             // 
-            Username_textBox.BackColor = Color.FromArgb(30, 31, 34);
-            Username_textBox.BorderStyle = BorderStyle.None;
-            Username_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            Username_textBox.ForeColor = Color.White;
-            Username_textBox.Location = new Point(45, 88);
-            Username_textBox.Name = "Username_textBox";
-            Username_textBox.PlaceholderText = "From";
-            Username_textBox.Size = new Size(235, 26);
-            Username_textBox.TabIndex = 7;
+            from_textBox.BackColor = Color.FromArgb(30, 31, 34);
+            from_textBox.BorderStyle = BorderStyle.None;
+            from_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            from_textBox.ForeColor = Color.White;
+            from_textBox.Location = new Point(45, 88);
+            from_textBox.Name = "from_textBox";
+            from_textBox.PlaceholderText = "From";
+            from_textBox.Size = new Size(235, 26);
+            from_textBox.TabIndex = 7;
             // 
-            // textBox1
+            // to_textBox
             // 
-            textBox1.BackColor = Color.FromArgb(30, 31, 34);
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(45, 129);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "To";
-            textBox1.Size = new Size(235, 26);
-            textBox1.TabIndex = 8;
+            to_textBox.BackColor = Color.FromArgb(30, 31, 34);
+            to_textBox.BorderStyle = BorderStyle.None;
+            to_textBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            to_textBox.ForeColor = Color.White;
+            to_textBox.Location = new Point(45, 129);
+            to_textBox.Name = "to_textBox";
+            to_textBox.PlaceholderText = "To";
+            to_textBox.Size = new Size(235, 26);
+            to_textBox.TabIndex = 8;
             // 
             // CreateLog
             // 
@@ -91,8 +91,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 47, 51);
             ClientSize = new Size(324, 276);
-            Controls.Add(textBox1);
-            Controls.Add(Username_textBox);
+            Controls.Add(to_textBox);
+            Controls.Add(from_textBox);
             Controls.Add(label1);
             Controls.Add(create_log);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -108,7 +108,7 @@
 
         private Button create_log;
         private Label label1;
-        private TextBox Username_textBox;
-        private TextBox textBox1;
+        private TextBox from_textBox;
+        private TextBox to_textBox;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -35,9 +36,35 @@ namespace Kørsels_Log
 
         private void create_log_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Home home = new Home();
-            home.Show();
+            int LogID = Functions.GetNewLogID();
+            string query = "INSERT INTO logs (LogID, UserID, WhereFrom, WhereTo) VALUES (@LogID ,@UserID, @WhereFrom, @WhereTo)";
+            using (SqlConnection con = Globals.GetOpenConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@LogID", LogID);
+                    command.Parameters.AddWithValue("@UserID", Globals.UserID);
+                    command.Parameters.AddWithValue("@WhereFrom", from_textBox.Text);
+                    command.Parameters.AddWithValue("@WhereTo", to_textBox.Text);
+
+                    try { 
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Log Added Successfully");
+                        this.Hide();
+                        Home home = new Home();
+                        home.Show();
+                    } catch (Exception ex)
+                    {
+                        if(Globals.Debug)
+                        {
+                            MessageBox.Show("Error: " + ex);
+                        } else
+                        {
+                            MessageBox.Show("Failed to add Log");
+                        }
+                    }
+                }
+            }
         }
     }
 }
