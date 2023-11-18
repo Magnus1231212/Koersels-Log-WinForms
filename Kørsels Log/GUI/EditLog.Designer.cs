@@ -1,6 +1,6 @@
 ﻿namespace Kørsels_Log
 {
-    partial class CreateLog
+    partial class EditLog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateLog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditLog));
             create_log = new Button();
             label1 = new Label();
             from_textBox = new TextBox();
@@ -96,7 +96,7 @@
             label4.Size = new Size(303, 2);
             label4.TabIndex = 15;
             // 
-            // CreateLog
+            // EditLog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -108,10 +108,10 @@
             Controls.Add(label1);
             Controls.Add(create_log);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "CreateLog";
-            Text = "CreateLog";
-            FormClosing += CreateLog_FormClosing;
-            Load += CreateLog_Load;
+            Name = "EditLog";
+            Text = "EditLog";
+            FormClosing += EditLog_FormClosing;
+            Load += EditLog_Load;
             ResumeLayout(false);
             PerformLayout();
         }

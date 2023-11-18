@@ -58,8 +58,8 @@ namespace Kørsels_Log.src
                 WhereTo varchar(255)
             );
 
-            INSERT INTO users (UserID, UserName, Password) VALUES (1, 'Nolfi', '123')
-            INSERT INTO admins (AdminID, UserName, Password) VALUES (1, 'Nolfi', '123456')
+            INSERT INTO users (UserID, UserName, Password) VALUES (1, 'Nolfi', 'CD8C29B8DEED323FE1538CFBDB46FC2A2EA61CFD67807F0629708EA2A6E13A2919DEF3C837C4E7F2C8E0067568E3236827DEFB05C9346E476B6E954440A908A7') -- 123
+            INSERT INTO admins (AdminID, UserName, Password) VALUES (1, 'Nolfi', '0A47151A074E633AB7B6BED6AAB724ABBDDCD3250F80A06BC612A233A907805101F2441B5B2926E54CE8AC8CFBC074BB7A56748830487DF09591DBE167E800F6') -- 123456
 
             INSERT INTO logs (LogID, UserID, WhereFrom, WhereTo) VALUES (1, 1, 'Amstadam', 'Hamborg')
         ";

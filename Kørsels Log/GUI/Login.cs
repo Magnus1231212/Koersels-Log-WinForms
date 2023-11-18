@@ -85,6 +85,8 @@ namespace Kørsels_Log
             string UserQuery = "SELECT * FROM users WHERE UserName = @UserName AND Password = @Password";
             string AdminQuery = "SELECT * FROM admins WHERE UserName = @UserName AND Password = @Password";
 
+            string pass = Functions.GetEncryptedPassword(Password_textBox.Text);
+
             string path = Application.UserAppDataPath;
 
             if (RememberMe.Checked)
@@ -92,7 +94,7 @@ namespace Kørsels_Log
                 string data = Path.Combine(path, "data");
                 var file = File.Create(data);
                 file.Close();
-                string[] saveData = new string[] { Username_textBox.Text + " " + Password_textBox.Text };
+                string[] saveData = new string[] { Username_textBox.Text + " " + pass };
                 File.AppendAllLines(data, saveData);
             }
 
@@ -104,7 +106,7 @@ namespace Kørsels_Log
                 using (SqlCommand command = new SqlCommand(UserQuery, con))
                 {
                     command.Parameters.AddWithValue("@UserName", Username_textBox.Text);
-                    command.Parameters.AddWithValue("@Password", Password_textBox.Text);
+                    command.Parameters.AddWithValue("@Password", pass);
 
                     SqlDataAdapter userAdapter = new SqlDataAdapter(command);
                     userAdapter.Fill(userTabel);
@@ -114,7 +116,7 @@ namespace Kørsels_Log
                 using (SqlCommand command = new SqlCommand(AdminQuery, con))
                 {
                     command.Parameters.AddWithValue("@UserName", Username_textBox.Text);
-                    command.Parameters.AddWithValue("@Password", Password_textBox.Text);
+                    command.Parameters.AddWithValue("@Password", pass);
 
                     SqlDataAdapter adminAdapter = new SqlDataAdapter(command);
                     adminAdapter.Fill(adminTabel);

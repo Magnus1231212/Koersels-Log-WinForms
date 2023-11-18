@@ -38,6 +38,7 @@ namespace Kørsels_Log
         private void Home_Load(object sender, EventArgs e)
         {
             label1.Text = $"Welcome Back {Globals.UserName}!";
+            List<ListBoxItem> data = new List<ListBoxItem>();
             listBox1.DisplayMember = "Text";
             listBox1.ValueMember = "Value";
 
@@ -61,8 +62,9 @@ namespace Kørsels_Log
             {
                 foreach (DataRow row in Logdata.Rows)
                 {
-                    listBox1.Items.Add(new ListBoxItem() { Text = $"From: {row["WhereFrom"].ToString()} | To: {row["WhereTo"].ToString()}", Value = Convert.ToInt32(row["LogID"].ToString()) });
+                    data.Add(new ListBoxItem() { Text = $"From: {row["WhereFrom"].ToString()} | To: {row["WhereTo"].ToString()}", Value = Convert.ToInt32(row["LogID"].ToString()) });
                 }
+                listBox1.DataSource = data;
             }
         }
 

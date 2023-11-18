@@ -12,19 +12,19 @@ using Kørsels_Log.src;
 
 namespace Kørsels_Log
 {
-    public partial class CreateLog : Form
+    public partial class EditLog : Form
     {
-        public CreateLog()
+        public EditLog()
         {
             InitializeComponent();
         }
 
-        private void CreateLog_FormClosing(object sender, FormClosingEventArgs e)
+        private void EditLog_FormClosing(object sender, FormClosingEventArgs e)
         {
             Functions.Exit();
         }
 
-        private void CreateLog_Load(object sender, EventArgs e)
+        private void EditLog_Load(object sender, EventArgs e)
         {
 
         }

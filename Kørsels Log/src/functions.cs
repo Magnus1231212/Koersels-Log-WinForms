@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +76,29 @@ namespace Kørsels_Log.src
                 {
                     object result = command.ExecuteScalar();
                     return Convert.ToInt32(result) + 1;
+                }
+            }
+        }
+
+        public static string GetEncryptedPassword(string password)
+        {
+            string query = "SELECT HASHBYTES('SHA2_512', @password)";
+            using (SqlConnection con = Globals.GetOpenConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@password", password);
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        byte[] hashBytes = (byte[])result;
+                        Debug.WriteLine(BitConverter.ToString(hashBytes).Replace("-", ""));
+                        return BitConverter.ToString(hashBytes).Replace("-", "");
+                    }
+                    else
+                    {
+                        return "";
+                    }
                 }
             }
         }
