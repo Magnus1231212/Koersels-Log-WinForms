@@ -15,12 +15,10 @@ namespace Kørsels_Log
 
     public partial class CreateUser : Form
     {
-        private int LogUserID;
 
-        public CreateUser(int logUserID)
+        public CreateUser()
         {
             InitializeComponent();
-            LogUserID = logUserID;
         }
 
         private void CreateUser_FormClosing(object sender, FormClosingEventArgs e)
@@ -45,8 +43,14 @@ namespace Kørsels_Log
 
         private void create_user_Click(object sender, EventArgs e)
         {
-            int LogID = Functions.GetNewLogID();
-            string query = "INSERT INTO logs (LogID, UserID, WhereFrom, WhereTo) VALUES (@LogID ,@UserID, @WhereFrom, @WhereTo)";
+            int UserID = Functions.GetNewUserID();
+            int AdminID = Functions.GetNewAdminID();
+            string pass = Functions.GetEncryptedPassword(password_textBox.Text);
+            string query = "INSERT INTO users (UserID, UserName, Password) VALUES (@UserID, @UserName, @Password)";
+            if (admin_checkBox.Checked)
+            {
+                query = "INSERT INTO admins (AdminID, UserName, Password) VALUES (@UserID, @UserName, @Password)";
+            }
             if (username_textBox.Text == "" || password_textBox.Text == "")
             {
                 MessageBox.Show("Please fill out all fields");
@@ -56,15 +60,21 @@ namespace Kørsels_Log
             {
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    command.Parameters.AddWithValue("@LogID", LogID);
-                    command.Parameters.AddWithValue("@UserID", LogUserID);
-                    command.Parameters.AddWithValue("@WhereFrom", username_textBox.Text);
-                    command.Parameters.AddWithValue("@WhereTo", password_textBox.Text);
+                    if(admin_checkBox.Checked)
+                    {
+                        command.Parameters.AddWithValue("@UserID", AdminID);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                    }
+                    command.Parameters.AddWithValue("@UserName", username_textBox.Text);
+                    command.Parameters.AddWithValue("@Password", pass);
 
                     try
                     {
                         command.ExecuteNonQuery();
-                        MessageBox.Show("Log Added Successfully");
+                        MessageBox.Show("User Added Successfully");
                         if (Globals.IsAdmin)
                         {
                             this.Hide();
@@ -80,7 +90,7 @@ namespace Kørsels_Log
                         }
                         else
                         {
-                            MessageBox.Show("Failed to add Log");
+                            MessageBox.Show("Failed to add User");
                         }
                     }
                 }

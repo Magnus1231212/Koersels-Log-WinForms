@@ -209,7 +209,9 @@ namespace Kørsels_Log
 
         private void create_user_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            CreateUser createuser = new CreateUser();
+            createuser.Show();
         }
     }
 }

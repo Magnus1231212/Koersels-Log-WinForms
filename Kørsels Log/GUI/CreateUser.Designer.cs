@@ -34,6 +34,7 @@
             username_textBox = new TextBox();
             password_textBox = new TextBox();
             label4 = new Label();
+            admin_checkBox = new CheckBox();
             SuspendLayout();
             // 
             // create_user
@@ -42,7 +43,7 @@
             create_user.FlatAppearance.BorderSize = 0;
             create_user.FlatStyle = FlatStyle.Flat;
             create_user.ForeColor = Color.White;
-            create_user.Location = new Point(45, 199);
+            create_user.Location = new Point(45, 207);
             create_user.Name = "create_user";
             create_user.Size = new Size(235, 31);
             create_user.TabIndex = 5;
@@ -96,12 +97,24 @@
             label4.Size = new Size(303, 2);
             label4.TabIndex = 15;
             // 
+            // admin_checkBox
+            // 
+            admin_checkBox.AutoSize = true;
+            admin_checkBox.ForeColor = Color.White;
+            admin_checkBox.Location = new Point(45, 166);
+            admin_checkBox.Name = "admin_checkBox";
+            admin_checkBox.Size = new Size(94, 19);
+            admin_checkBox.TabIndex = 16;
+            admin_checkBox.Text = "Make Admin";
+            admin_checkBox.UseVisualStyleBackColor = true;
+            // 
             // CreateUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 47, 51);
             ClientSize = new Size(324, 276);
+            Controls.Add(admin_checkBox);
             Controls.Add(label4);
             Controls.Add(password_textBox);
             Controls.Add(username_textBox);
@@ -123,5 +136,6 @@
         private TextBox username_textBox;
         private TextBox password_textBox;
         private Label label4;
+        private CheckBox admin_checkBox;
     }
 }
