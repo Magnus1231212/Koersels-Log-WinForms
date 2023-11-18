@@ -92,11 +92,10 @@
             RememberMe.AutoSize = true;
             RememberMe.BackColor = Color.Transparent;
             RememberMe.FlatAppearance.BorderSize = 0;
-            RememberMe.FlatStyle = FlatStyle.Flat;
             RememberMe.ForeColor = Color.White;
             RememberMe.Location = new Point(49, 205);
             RememberMe.Name = "RememberMe";
-            RememberMe.Size = new Size(101, 19);
+            RememberMe.Size = new Size(104, 19);
             RememberMe.TabIndex = 4;
             RememberMe.Text = "Remember me";
             RememberMe.UseVisualStyleBackColor = false;

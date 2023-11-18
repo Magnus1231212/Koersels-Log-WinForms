@@ -13,33 +13,27 @@ using Kørsels_Log.src;
 namespace Kørsels_Log
 {
 
-    public partial class CreateLog : Form
+    public partial class CreateUser : Form
     {
         private int LogUserID;
 
-        public CreateLog(int logUserID)
+        public CreateUser(int logUserID)
         {
             InitializeComponent();
             LogUserID = logUserID;
         }
 
-        private void CreateLog_FormClosing(object sender, FormClosingEventArgs e)
+        private void CreateUser_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Globals.IsAdmin)
+            if (Globals.IsAdmin)
             {
                 this.Hide();
                 Admin admin = new Admin();
                 admin.Show();
             }
-            else
-            {
-                this.Hide();
-                Home home = new Home();
-                home.Show();
-            }
         }
 
-        private void CreateLog_Load(object sender, EventArgs e)
+        private void CreateUser_Load(object sender, EventArgs e)
         {
 
         }
@@ -49,11 +43,11 @@ namespace Kørsels_Log
 
         }
 
-        private void create_log_Click(object sender, EventArgs e)
+        private void create_user_Click(object sender, EventArgs e)
         {
             int LogID = Functions.GetNewLogID();
             string query = "INSERT INTO logs (LogID, UserID, WhereFrom, WhereTo) VALUES (@LogID ,@UserID, @WhereFrom, @WhereTo)";
-            if(from_textBox.Text == "" || to_textBox.Text == "")
+            if (username_textBox.Text == "" || password_textBox.Text == "")
             {
                 MessageBox.Show("Please fill out all fields");
                 return;
@@ -64,8 +58,8 @@ namespace Kørsels_Log
                 {
                     command.Parameters.AddWithValue("@LogID", LogID);
                     command.Parameters.AddWithValue("@UserID", LogUserID);
-                    command.Parameters.AddWithValue("@WhereFrom", from_textBox.Text);
-                    command.Parameters.AddWithValue("@WhereTo", to_textBox.Text);
+                    command.Parameters.AddWithValue("@WhereFrom", username_textBox.Text);
+                    command.Parameters.AddWithValue("@WhereTo", password_textBox.Text);
 
                     try
                     {
@@ -76,12 +70,6 @@ namespace Kørsels_Log
                             this.Hide();
                             Admin admin = new Admin();
                             admin.Show();
-                        }
-                        else
-                        { 
-                            this.Hide();
-                            Home home = new Home();
-                            home.Show();
                         }
                     }
                     catch (Exception ex)

@@ -58,6 +58,17 @@ namespace Kørsels_Log
         private void create_log_Click(object sender, EventArgs e)
         {
             string query = "UPDATE logs SET WhereFrom = @WhereFrom, WhereTo = @WhereTo WHERE LogID = @LogID";
+
+            if(from_textBox.Text == "" || to_textBox.Text == "")
+            {
+                MessageBox.Show("Please fill out all fields");
+                return;
+            }
+            if(from_textBox.Text == From && to_textBox.Text == To)
+            {
+                MessageBox.Show("You have not changed anything");
+                return;
+            }
             using (SqlConnection con = Globals.GetOpenConnection())
             {
                 using (SqlCommand command = new SqlCommand(query, con))

@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="GUI\CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="GUI\EditLog.cs">
       <SubType>Form</SubType>
     </Compile>
