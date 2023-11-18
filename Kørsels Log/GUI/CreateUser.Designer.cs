@@ -122,7 +122,7 @@
             Controls.Add(create_user);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CreateUser";
-            Text = "CreateUser";
+            Text = "CreateUser - Kørsels Log";
             FormClosing += CreateUser_FormClosing;
             Load += CreateUser_Load;
             ResumeLayout(false);

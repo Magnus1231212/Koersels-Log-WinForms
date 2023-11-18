@@ -60,10 +60,11 @@ namespace Kørsels_Log
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBox1.SelectedIndex != -1)
+            if (listBox1.SelectedIndex != -1)
             {
                 selectedUserID = Convert.ToInt32(listBox1.SelectedValue.ToString());
-            } else
+            }
+            else
             {
                 selectedUserID = 0;
             }
@@ -154,7 +155,7 @@ namespace Kørsels_Log
                     using (SqlCommand command = new SqlCommand("DELETE FROM logs WHERE LogID = @LogID", con))
                     {
                         command.Parameters.AddWithValue("@LogID", selectedLogID);
-                        command.ExecuteNonQuery();  
+                        command.ExecuteNonQuery();
                     }
                 }
                 updateLogList();
@@ -213,7 +214,7 @@ namespace Kørsels_Log
 
             if (result == DialogResult.Yes)
             {
-                if(selectedUserID != 0)
+                if (selectedUserID != 0)
                 {
                     using (SqlConnection con = Globals.GetOpenConnection())
                     {

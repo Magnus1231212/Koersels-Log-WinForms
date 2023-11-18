@@ -81,10 +81,11 @@ namespace Kørsels_Log
             string query = "UPDATE users SET UserName = @UserName, Password = @Password WHERE UserID = @UserID";
             string pass = password_textBox.Text;
 
-            if(pass == "")
+            if (pass == "")
             {
                 pass = Password;
-            } else
+            }
+            else
             {
                 pass = Functions.GetEncryptedPassword(password_textBox.Text);
             }

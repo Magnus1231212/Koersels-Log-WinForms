@@ -60,7 +60,7 @@ namespace Kørsels_Log
             {
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
-                    if(admin_checkBox.Checked)
+                    if (admin_checkBox.Checked)
                     {
                         command.Parameters.AddWithValue("@UserID", AdminID);
                     }

@@ -25,7 +25,7 @@ namespace Kørsels_Log
 
         private void CreateLog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Globals.IsAdmin)
+            if (Globals.IsAdmin)
             {
                 this.Hide();
                 Admin admin = new Admin();
@@ -53,7 +53,7 @@ namespace Kørsels_Log
         {
             int LogID = Functions.GetNewLogID();
             string query = "INSERT INTO logs (LogID, UserID, WhereFrom, WhereTo) VALUES (@LogID ,@UserID, @WhereFrom, @WhereTo)";
-            if(from_textBox.Text == "" || to_textBox.Text == "")
+            if (from_textBox.Text == "" || to_textBox.Text == "")
             {
                 MessageBox.Show("Please fill out all fields");
                 return;
@@ -78,7 +78,7 @@ namespace Kørsels_Log
                             admin.Show();
                         }
                         else
-                        { 
+                        {
                             this.Hide();
                             Home home = new Home();
                             home.Show();

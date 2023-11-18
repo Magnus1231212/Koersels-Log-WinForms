@@ -109,7 +109,7 @@
             Controls.Add(create_log);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EditLog";
-            Text = "EditLog";
+            Text = "EditLog - Kørsels Log";
             FormClosing += EditLog_FormClosing;
             Load += EditLog_Load;
             ResumeLayout(false);

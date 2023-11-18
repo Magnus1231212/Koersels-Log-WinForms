@@ -29,7 +29,7 @@ namespace Kørsels_Log
 
         private void EditLog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(Globals.IsAdmin)
+            if (Globals.IsAdmin)
             {
                 this.Hide();
                 Admin admin = new Admin();
@@ -40,7 +40,7 @@ namespace Kørsels_Log
                 this.Hide();
                 Home home = new Home();
                 home.Show();
-            }   
+            }
         }
 
         private void EditLog_Load(object sender, EventArgs e)
@@ -59,12 +59,12 @@ namespace Kørsels_Log
         {
             string query = "UPDATE logs SET WhereFrom = @WhereFrom, WhereTo = @WhereTo WHERE LogID = @LogID";
 
-            if(from_textBox.Text == "" || to_textBox.Text == "")
+            if (from_textBox.Text == "" || to_textBox.Text == "")
             {
                 MessageBox.Show("Please fill out all fields");
                 return;
             }
-            if(from_textBox.Text == From && to_textBox.Text == To)
+            if (from_textBox.Text == From && to_textBox.Text == To)
             {
                 MessageBox.Show("You have not changed anything");
                 return;
@@ -81,7 +81,7 @@ namespace Kørsels_Log
                     {
                         command.ExecuteNonQuery();
                         MessageBox.Show("Log Updated Successfully");
-                        if(Globals.IsAdmin)
+                        if (Globals.IsAdmin)
                         {
                             this.Hide();
                             Admin admin = new Admin();

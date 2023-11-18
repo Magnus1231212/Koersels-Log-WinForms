@@ -277,7 +277,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Admin";
-            Text = "Admin";
+            Text = "Admin - Kørsels Log";
             FormClosing += Admin_FormClosing;
             Load += Admin_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

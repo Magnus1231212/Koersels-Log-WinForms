@@ -122,7 +122,7 @@
             Controls.Add(update_user);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EditUser";
-            Text = "EditUser";
+            Text = "EditUser - Kørsels Log";
             FormClosing += EditUser_FormClosing;
             Load += EditUser_Load;
             ResumeLayout(false);

@@ -158,7 +158,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "Home";
-            Text = "Home";
+            Text = "Home - Kørsels Log";
             FormClosing += Home_FormClosing;
             Load += Home_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
