@@ -39,6 +39,11 @@ namespace Kørsels_Log.src
             login.Show();
             string dataPath = Path.Combine(Application.UserAppDataPath, "data");
             File.Delete(dataPath);
+
+            Globals.IsLoggedIn = false;
+            Globals.IsAdmin = false;
+            Globals.UserID = 0;
+            Globals.UserName = "";
         }
 
         public static int GetNewLogID() 

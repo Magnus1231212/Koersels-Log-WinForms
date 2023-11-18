@@ -14,6 +14,9 @@ namespace Kørsels_Log
 {
     public partial class Admin : Form
     {
+        private int selectedLogID = 0;
+        private int selectedUserID = 0;
+
         public Admin()
         {
             InitializeComponent();
@@ -55,13 +58,9 @@ namespace Kørsels_Log
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            button1.Hide();
-        }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            selectedUserID = Convert.ToInt32(listBox1.SelectedValue.ToString());
             label6.Hide();
             List<ListBoxItem> data = new List<ListBoxItem>();
             listBox2.DisplayMember = "Text";
@@ -89,26 +88,84 @@ namespace Kørsels_Log
                     data.Add(new ListBoxItem() { Text = $"From: {row["WhereFrom"].ToString()} | To: {row["WhereTo"].ToString()}", Value = Convert.ToInt32(row["LogID"].ToString()) });
                 }
                 listBox2.DataSource = data;
-            } else
+                listBox2.ClearSelected();
+            }
+            else
             {
                 data.Clear();
                 listBox2.DataSource = data;
+                listBox2.ClearSelected();
+            }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedIndex != -1)
+            {
+                selectedLogID = Convert.ToInt32(listBox2.SelectedValue.ToString());
+                showLogActions();
+            }
+            else
+            {
+                showUserActions();
             }
         }
 
         private void showUserActions()
         {
-
+            delete_log.Hide();
+            edit_log.Hide();
         }
 
         private void showLogActions()
         {
-
+            delete_log.Show();
+            edit_log.Show();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Functions.LogOut();
+        }
+
+        private void delete_log_Click(object sender, EventArgs e)
+        {
+            DialogResult result;
+            result = MessageBox.Show($"Are you sure that you want to delete\n{listBox1.GetItemText(listBox1.SelectedItem)}", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        private void edit_log_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM logs WHERE LogID = @LogID";
+
+            using (SqlConnection con = Globals.GetOpenConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@LogID", selectedLogID);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string? from = reader["WhereFrom"].ToString(); // Replace "FromColumn" with the actual column name
+                            string? to = reader["WhereTo"].ToString();     // Replace "ToColumn" with the actual column name
+
+                            // Hide the current form
+                            this.Hide();
+
+                            // Show the EditLog form and pass the retrieved data
+                            EditLog editLogForm = new EditLog(selectedLogID, from, to);
+                            editLogForm.Show();
+                        }
+                    }
+                }
+            }
         }
     }
 }

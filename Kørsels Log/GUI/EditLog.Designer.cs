@@ -46,7 +46,7 @@
             create_log.Name = "create_log";
             create_log.Size = new Size(235, 31);
             create_log.TabIndex = 5;
-            create_log.Text = "Create Log";
+            create_log.Text = "Edit Log";
             create_log.UseVisualStyleBackColor = false;
             create_log.Click += create_log_Click;
             // 
@@ -58,7 +58,7 @@
             label1.Name = "label1";
             label1.Size = new Size(300, 37);
             label1.TabIndex = 6;
-            label1.Text = "Create New Log";
+            label1.Text = "Edit Log";
             label1.TextAlign = ContentAlignment.TopCenter;
             label1.Click += label1_Click;
             // 

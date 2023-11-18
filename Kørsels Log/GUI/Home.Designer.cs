@@ -36,7 +36,7 @@
             create_log = new Button();
             label3 = new Label();
             label4 = new Label();
-            button1 = new Button();
+            edit = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -126,19 +126,19 @@
             label4.Size = new Size(533, 2);
             label4.TabIndex = 6;
             // 
-            // button1
+            // edit
             // 
-            button1.BackColor = Color.FromArgb(89, 100, 242);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(12, 159);
-            button1.Name = "button1";
-            button1.Size = new Size(235, 31);
-            button1.TabIndex = 7;
-            button1.Text = "Edit Selected Log";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            edit.BackColor = Color.FromArgb(89, 100, 242);
+            edit.FlatAppearance.BorderSize = 0;
+            edit.FlatStyle = FlatStyle.Flat;
+            edit.ForeColor = Color.White;
+            edit.Location = new Point(12, 159);
+            edit.Name = "edit";
+            edit.Size = new Size(235, 31);
+            edit.TabIndex = 7;
+            edit.Text = "Edit Selected Log";
+            edit.UseVisualStyleBackColor = false;
+            edit.Click += edit_Click;
             // 
             // Home
             // 
@@ -146,7 +146,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 47, 51);
             ClientSize = new Size(557, 450);
-            Controls.Add(button1);
+            Controls.Add(edit);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(create_log);
@@ -175,6 +175,6 @@
         private Button create_log;
         private Label label3;
         private Label label4;
-        private Button button1;
+        private Button edit;
     }
 }

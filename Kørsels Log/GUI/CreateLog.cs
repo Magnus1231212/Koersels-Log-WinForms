@@ -21,7 +21,9 @@ namespace Kørsels_Log
 
         private void CreateLog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Functions.Exit();
+            this.Hide();
+            Home home = new Home();
+            home.Show();
         }
 
         private void CreateLog_Load(object sender, EventArgs e)

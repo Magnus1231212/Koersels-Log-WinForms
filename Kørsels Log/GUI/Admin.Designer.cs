@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
-            button1 = new Button();
+            edit_log = new Button();
             label4 = new Label();
             label3 = new Label();
-            create_log = new Button();
+            delete_log = new Button();
             label2 = new Label();
             listBox1 = new ListBox();
             label1 = new Label();
@@ -46,19 +46,20 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // edit_log
             // 
-            button1.BackColor = Color.FromArgb(89, 100, 242);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(12, 155);
-            button1.Name = "button1";
-            button1.Size = new Size(235, 31);
-            button1.TabIndex = 15;
-            button1.Text = "Edit Selected Log";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            edit_log.BackColor = Color.FromArgb(89, 100, 242);
+            edit_log.FlatAppearance.BorderSize = 0;
+            edit_log.FlatStyle = FlatStyle.Flat;
+            edit_log.ForeColor = Color.White;
+            edit_log.Location = new Point(12, 140);
+            edit_log.Name = "edit_log";
+            edit_log.Size = new Size(235, 31);
+            edit_log.TabIndex = 15;
+            edit_log.Text = "Edit Selected Log";
+            edit_log.UseVisualStyleBackColor = false;
+            edit_log.Visible = false;
+            edit_log.Click += edit_log_Click;
             // 
             // label4
             // 
@@ -81,18 +82,20 @@
             label3.TabIndex = 13;
             label3.Text = "Actions";
             // 
-            // create_log
+            // delete_log
             // 
-            create_log.BackColor = Color.FromArgb(89, 100, 242);
-            create_log.FlatAppearance.BorderSize = 0;
-            create_log.FlatStyle = FlatStyle.Flat;
-            create_log.ForeColor = Color.White;
-            create_log.Location = new Point(12, 103);
-            create_log.Name = "create_log";
-            create_log.Size = new Size(235, 31);
-            create_log.TabIndex = 12;
-            create_log.Text = "Create New Log";
-            create_log.UseVisualStyleBackColor = false;
+            delete_log.BackColor = Color.FromArgb(89, 100, 242);
+            delete_log.FlatAppearance.BorderSize = 0;
+            delete_log.FlatStyle = FlatStyle.Flat;
+            delete_log.ForeColor = Color.White;
+            delete_log.Location = new Point(12, 103);
+            delete_log.Name = "delete_log";
+            delete_log.Size = new Size(235, 31);
+            delete_log.TabIndex = 12;
+            delete_log.Text = "Delete Selected Log";
+            delete_log.UseVisualStyleBackColor = false;
+            delete_log.Visible = false;
+            delete_log.Click += delete_log_Click;
             // 
             // label2
             // 
@@ -154,6 +157,7 @@
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(284, 360);
             listBox2.TabIndex = 16;
+            listBox2.SelectedIndexChanged += listBox2_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -184,7 +188,7 @@
             button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
             button2.ForeColor = Color.White;
-            button2.Location = new Point(12, 205);
+            button2.Location = new Point(12, 230);
             button2.Name = "button2";
             button2.Size = new Size(235, 31);
             button2.TabIndex = 19;
@@ -210,7 +214,7 @@
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
             button4.ForeColor = Color.White;
-            button4.Location = new Point(12, 306);
+            button4.Location = new Point(12, 279);
             button4.Name = "button4";
             button4.Size = new Size(235, 31);
             button4.TabIndex = 21;
@@ -229,10 +233,10 @@
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(listBox2);
-            Controls.Add(button1);
+            Controls.Add(edit_log);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(create_log);
+            Controls.Add(delete_log);
             Controls.Add(label2);
             Controls.Add(listBox1);
             Controls.Add(label1);
@@ -251,10 +255,10 @@
 
         #endregion
 
-        private Button button1;
+        private Button edit_log;
         private Label label4;
         private Label label3;
-        private Button create_log;
+        private Button delete_log;
         private Label label2;
         private ListBox listBox1;
         private Label label1;

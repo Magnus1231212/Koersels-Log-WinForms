@@ -83,16 +83,41 @@ namespace Kørsels_Log
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void create_log_Click(object sender, EventArgs e)
         {
             this.Hide();
             CreateLog createlog = new CreateLog();
             createlog.Show();
+        }
+
+        private void edit_Click(object sender, EventArgs e)
+        {
+            int LogID = Convert.ToInt32(listBox1.SelectedValue);
+            string query = "SELECT * FROM logs WHERE LogID = @LogID";
+
+            using (SqlConnection con = Globals.GetOpenConnection())
+            {
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+                    command.Parameters.AddWithValue("@LogID", LogID);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string? from = reader["WhereFrom"].ToString(); // Replace "FromColumn" with the actual column name
+                            string? to = reader["WhereTo"].ToString();     // Replace "ToColumn" with the actual column name
+
+                            // Hide the current form
+                            this.Hide();
+
+                            // Show the EditLog form and pass the retrieved data
+                            EditLog editLogForm = new EditLog(LogID, from, to);
+                            editLogForm.Show();
+                        }
+                    }
+                }
+            }
         }
     }
 }

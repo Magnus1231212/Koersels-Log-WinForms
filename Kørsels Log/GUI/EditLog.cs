@@ -14,19 +14,40 @@ namespace Kørsels_Log
 {
     public partial class EditLog : Form
     {
-        public EditLog()
+        private int LogID;
+        private string? From;
+        private string? To;
+
+        public EditLog(int ID, string? from, string? to)
         {
             InitializeComponent();
+
+            LogID = ID;
+            From = from;
+            To = to;
         }
 
         private void EditLog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Functions.Exit();
+            if(Globals.IsAdmin)
+            {
+                this.Hide();
+                Admin admin = new Admin();
+                admin.Show();
+            }
+            else
+            {
+                this.Hide();
+                Home home = new Home();
+                home.Show();
+            }   
         }
 
         private void EditLog_Load(object sender, EventArgs e)
         {
-
+            label1.Text = "Edit Log #" + LogID;
+            from_textBox.Text = From;
+            to_textBox.Text = To;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -36,24 +57,31 @@ namespace Kørsels_Log
 
         private void create_log_Click(object sender, EventArgs e)
         {
-            int LogID = Functions.GetNewLogID();
-            string query = "INSERT INTO logs (LogID, UserID, WhereFrom, WhereTo) VALUES (@LogID ,@UserID, @WhereFrom, @WhereTo)";
+            string query = "UPDATE logs SET WhereFrom = @WhereFrom, WhereTo = @WhereTo WHERE LogID = @LogID";
             using (SqlConnection con = Globals.GetOpenConnection())
             {
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@LogID", LogID);
-                    command.Parameters.AddWithValue("@UserID", Globals.UserID);
                     command.Parameters.AddWithValue("@WhereFrom", from_textBox.Text);
                     command.Parameters.AddWithValue("@WhereTo", to_textBox.Text);
 
                     try
                     {
                         command.ExecuteNonQuery();
-                        MessageBox.Show("Log Added Successfully");
-                        this.Hide();
-                        Home home = new Home();
-                        home.Show();
+                        MessageBox.Show("Log Updated Successfully");
+                        if(Globals.IsAdmin)
+                        {
+                            this.Hide();
+                            Admin admin = new Admin();
+                            admin.Show();
+                        }
+                        else
+                        {
+                            this.Hide();
+                            Home home = new Home();
+                            home.Show();
+                        }
                     }
                     catch (Exception ex)
                     {
