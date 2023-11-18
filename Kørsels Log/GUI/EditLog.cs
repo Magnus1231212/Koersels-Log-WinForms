@@ -102,7 +102,7 @@ namespace Kørsels_Log
                         }
                         else
                         {
-                            MessageBox.Show("Failed to add Log");
+                            MessageBox.Show("Failed to Update Log");
                         }
                     }
                 }

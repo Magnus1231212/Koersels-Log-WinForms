@@ -200,7 +200,10 @@ namespace Kørsels_Log
 
         private void edit_user_Click(object sender, EventArgs e)
         {
-
+            int UserID = Convert.ToInt32(listBox1.SelectedValue.ToString());
+            this.Hide();
+            EditUser edituser = new EditUser(UserID);
+            edituser.Show();
         }
 
         private void delete_user_Click(object sender, EventArgs e)
