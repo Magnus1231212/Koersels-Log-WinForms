@@ -52,7 +52,7 @@ namespace Kørsels_Log
                             while (reader.Read())
                             {
                                 username_textBox.Text = reader["UserName"].ToString();
-                                Password = reader["Password"].ToString();
+                                Password = reader["Password"].ToString()!;
                             }
                         }
                     }
