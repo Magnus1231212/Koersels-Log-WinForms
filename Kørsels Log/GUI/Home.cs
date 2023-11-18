@@ -86,7 +86,7 @@ namespace Kørsels_Log
         private void create_log_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CreateLog createlog = new CreateLog();
+            CreateLog createlog = new CreateLog(Globals.UserID);
             createlog.Show();
         }
 

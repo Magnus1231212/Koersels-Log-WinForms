@@ -40,9 +40,11 @@
             listBox2 = new ListBox();
             label5 = new Label();
             label6 = new Label();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            delete_user = new Button();
+            edit_user = new Button();
+            create_user = new Button();
+            add_log = new Button();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             edit_log.FlatAppearance.BorderSize = 0;
             edit_log.FlatStyle = FlatStyle.Flat;
             edit_log.ForeColor = Color.White;
-            edit_log.Location = new Point(12, 140);
+            edit_log.Location = new Point(12, 100);
             edit_log.Name = "edit_log";
             edit_log.Size = new Size(235, 31);
             edit_log.TabIndex = 15;
@@ -88,7 +90,7 @@
             delete_log.FlatAppearance.BorderSize = 0;
             delete_log.FlatStyle = FlatStyle.Flat;
             delete_log.ForeColor = Color.White;
-            delete_log.Location = new Point(12, 103);
+            delete_log.Location = new Point(12, 150);
             delete_log.Name = "delete_log";
             delete_log.Size = new Size(235, 31);
             delete_log.TabIndex = 12;
@@ -182,44 +184,72 @@
             label6.Text = "Select a user to show logs";
             label6.TextAlign = ContentAlignment.TopCenter;
             // 
-            // button2
+            // delete_user
             // 
-            button2.BackColor = Color.FromArgb(89, 100, 242);
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(12, 230);
-            button2.Name = "button2";
-            button2.Size = new Size(235, 31);
-            button2.TabIndex = 19;
-            button2.Text = "Edit Selected Log";
-            button2.UseVisualStyleBackColor = false;
+            delete_user.BackColor = Color.FromArgb(89, 100, 242);
+            delete_user.FlatAppearance.BorderSize = 0;
+            delete_user.FlatStyle = FlatStyle.Flat;
+            delete_user.ForeColor = Color.White;
+            delete_user.Location = new Point(12, 200);
+            delete_user.Name = "delete_user";
+            delete_user.Size = new Size(235, 31);
+            delete_user.TabIndex = 19;
+            delete_user.Text = "Delete Selected User";
+            delete_user.UseVisualStyleBackColor = false;
+            delete_user.Click += delete_user_Click;
             // 
-            // button3
+            // edit_user
             // 
-            button3.BackColor = Color.FromArgb(89, 100, 242);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(12, 256);
-            button3.Name = "button3";
-            button3.Size = new Size(235, 31);
-            button3.TabIndex = 20;
-            button3.Text = "Edit Selected Log";
-            button3.UseVisualStyleBackColor = false;
+            edit_user.BackColor = Color.FromArgb(89, 100, 242);
+            edit_user.FlatAppearance.BorderSize = 0;
+            edit_user.FlatStyle = FlatStyle.Flat;
+            edit_user.ForeColor = Color.White;
+            edit_user.Location = new Point(12, 150);
+            edit_user.Name = "edit_user";
+            edit_user.Size = new Size(235, 31);
+            edit_user.TabIndex = 20;
+            edit_user.Text = "Edit Selected User";
+            edit_user.UseVisualStyleBackColor = false;
+            edit_user.Click += edit_user_Click;
             // 
-            // button4
+            // create_user
             // 
-            button4.BackColor = Color.FromArgb(89, 100, 242);
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.ForeColor = Color.White;
-            button4.Location = new Point(12, 279);
-            button4.Name = "button4";
-            button4.Size = new Size(235, 31);
-            button4.TabIndex = 21;
-            button4.Text = "Edit Selected Log";
-            button4.UseVisualStyleBackColor = false;
+            create_user.BackColor = Color.FromArgb(89, 100, 242);
+            create_user.FlatAppearance.BorderSize = 0;
+            create_user.FlatStyle = FlatStyle.Flat;
+            create_user.ForeColor = Color.White;
+            create_user.Location = new Point(12, 346);
+            create_user.Name = "create_user";
+            create_user.Size = new Size(235, 31);
+            create_user.TabIndex = 21;
+            create_user.Text = "Create New User";
+            create_user.UseVisualStyleBackColor = false;
+            create_user.Click += create_user_Click;
+            // 
+            // add_log
+            // 
+            add_log.BackColor = Color.FromArgb(89, 100, 242);
+            add_log.FlatAppearance.BorderSize = 0;
+            add_log.FlatStyle = FlatStyle.Flat;
+            add_log.ForeColor = Color.White;
+            add_log.Location = new Point(12, 100);
+            add_log.Name = "add_log";
+            add_log.Size = new Size(235, 31);
+            add_log.TabIndex = 22;
+            add_log.Text = "Add Log To Selected User";
+            add_log.UseVisualStyleBackColor = false;
+            add_log.Click += add_log_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(12, 306);
+            label7.Name = "label7";
+            label7.Size = new Size(110, 25);
+            label7.TabIndex = 23;
+            label7.Text = "Create User";
             // 
             // Admin
             // 
@@ -227,9 +257,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 47, 51);
             ClientSize = new Size(856, 450);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(label7);
+            Controls.Add(add_log);
+            Controls.Add(create_user);
+            Controls.Add(edit_user);
+            Controls.Add(delete_user);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(listBox2);
@@ -266,8 +298,10 @@
         private ListBox listBox2;
         private Label label5;
         private Label label6;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button delete_user;
+        private Button edit_user;
+        private Button create_user;
+        private Button add_log;
+        private Label label7;
     }
 }

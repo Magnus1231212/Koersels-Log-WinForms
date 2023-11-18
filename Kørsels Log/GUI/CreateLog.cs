@@ -12,18 +12,31 @@ using Kørsels_Log.src;
 
 namespace Kørsels_Log
 {
+
     public partial class CreateLog : Form
     {
-        public CreateLog()
+        private int LogUserID;
+
+        public CreateLog(int logUserID)
         {
             InitializeComponent();
+            LogUserID = logUserID;
         }
 
         private void CreateLog_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Hide();
-            Home home = new Home();
-            home.Show();
+            if(Globals.IsAdmin)
+            {
+                this.Hide();
+                Admin admin = new Admin();
+                admin.Show();
+            }
+            else
+            {
+                this.Hide();
+                Home home = new Home();
+                home.Show();
+            }
         }
 
         private void CreateLog_Load(object sender, EventArgs e)
@@ -45,7 +58,7 @@ namespace Kørsels_Log
                 using (SqlCommand command = new SqlCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@LogID", LogID);
-                    command.Parameters.AddWithValue("@UserID", Globals.UserID);
+                    command.Parameters.AddWithValue("@UserID", LogUserID);
                     command.Parameters.AddWithValue("@WhereFrom", from_textBox.Text);
                     command.Parameters.AddWithValue("@WhereTo", to_textBox.Text);
 
@@ -53,9 +66,18 @@ namespace Kørsels_Log
                     {
                         command.ExecuteNonQuery();
                         MessageBox.Show("Log Added Successfully");
-                        this.Hide();
-                        Home home = new Home();
-                        home.Show();
+                        if (Globals.IsAdmin)
+                        {
+                            this.Hide();
+                            Admin admin = new Admin();
+                            admin.Show();
+                        }
+                        else
+                        { 
+                            this.Hide();
+                            Home home = new Home();
+                            home.Show();
+                        }
                     }
                     catch (Exception ex)
                     {

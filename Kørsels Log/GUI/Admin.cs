@@ -60,7 +60,13 @@ namespace Kørsels_Log
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedUserID = Convert.ToInt32(listBox1.SelectedValue.ToString());
+            if(listBox1.SelectedIndex != -1)
+            {
+                selectedUserID = Convert.ToInt32(listBox1.SelectedValue.ToString());
+            } else
+            {
+                selectedUserID = 0;
+            }
             label6.Hide();
             List<ListBoxItem> data = new List<ListBoxItem>();
             listBox2.DisplayMember = "Text";
@@ -113,6 +119,10 @@ namespace Kørsels_Log
 
         private void showUserActions()
         {
+            add_log.Show();
+            edit_user.Show();
+            delete_user.Show();
+
             delete_log.Hide();
             edit_log.Hide();
         }
@@ -121,6 +131,10 @@ namespace Kørsels_Log
         {
             delete_log.Show();
             edit_log.Show();
+
+            add_log.Hide();
+            delete_user.Hide();
+            edit_user.Hide();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -135,7 +149,15 @@ namespace Kørsels_Log
 
             if (result == DialogResult.Yes)
             {
-                Close();
+                using (SqlConnection con = Globals.GetOpenConnection())
+                {
+                    using (SqlCommand command = new SqlCommand("DELETE FROM logs WHERE LogID = @LogID", con))
+                    {
+                        command.Parameters.AddWithValue("@LogID", selectedLogID);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                listBox1.ClearSelected();
             }
         }
 
@@ -166,6 +188,29 @@ namespace Kørsels_Log
                     }
                 }
             }
+        }
+
+        private void add_log_Click(object sender, EventArgs e)
+        {
+            int UserID = Convert.ToInt32(listBox1.SelectedValue.ToString());
+            this.Hide();
+            CreateLog createlog = new CreateLog(UserID);
+            createlog.Show();
+        }
+
+        private void edit_user_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void delete_user_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void create_user_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
