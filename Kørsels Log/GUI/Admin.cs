@@ -154,10 +154,9 @@ namespace Kørsels_Log
                     using (SqlCommand command = new SqlCommand("DELETE FROM logs WHERE LogID = @LogID", con))
                     {
                         command.Parameters.AddWithValue("@LogID", selectedLogID);
-                        command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();  
                     }
                 }
-                listBox1.ClearSelected();
             }
         }
 
