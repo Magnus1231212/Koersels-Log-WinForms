@@ -145,7 +145,7 @@ namespace Kørsels_Log
         private void delete_log_Click(object sender, EventArgs e)
         {
             DialogResult result;
-            result = MessageBox.Show($"Are you sure that you want to delete\n{listBox1.GetItemText(listBox1.SelectedItem)}", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            result = MessageBox.Show($"Are you sure that you want to delete\nLog: {listBox2.GetItemText(listBox2.SelectedItem)}", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
@@ -157,6 +157,7 @@ namespace Kørsels_Log
                         command.ExecuteNonQuery();  
                     }
                 }
+                updateLogList();
             }
         }
 
@@ -204,7 +205,29 @@ namespace Kørsels_Log
 
         private void delete_user_Click(object sender, EventArgs e)
         {
+            DialogResult result;
+            result = MessageBox.Show($"Are you sure that you want to delete\nUser: {listBox1.GetItemText(listBox1.SelectedItem)}", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
+            if (result == DialogResult.Yes)
+            {
+                if(selectedUserID != 0)
+                {
+                    using (SqlConnection con = Globals.GetOpenConnection())
+                    {
+                        using (SqlCommand command = new SqlCommand("DELETE FROM users WHERE UserID = @UserID", con))
+                        {
+                            command.Parameters.AddWithValue("@UserID", selectedUserID);
+                            command.ExecuteNonQuery();
+                        }
+                        using (SqlCommand command = new SqlCommand("DELETE FROM logs WHERE UserID = @UserID", con))
+                        {
+                            command.Parameters.AddWithValue("@UserID", selectedUserID);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    updateUserList();
+                }
+            }
         }
 
         private void create_user_Click(object sender, EventArgs e)
@@ -212,6 +235,73 @@ namespace Kørsels_Log
             this.Hide();
             CreateUser createuser = new CreateUser();
             createuser.Show();
+        }
+
+        private void updateUserList()
+        {
+            List<ListBoxItem> data = new List<ListBoxItem>();
+            listBox1.DisplayMember = "Text";
+            listBox1.ValueMember = "Value";
+
+            string LogsQuery = "SELECT * FROM users";
+
+            DataTable Userdata = new DataTable();
+
+            using (SqlConnection con = Globals.GetOpenConnection())
+            {
+                using (SqlCommand command = new SqlCommand(LogsQuery, con))
+                {
+                    SqlDataAdapter userAdapter = new SqlDataAdapter(command);
+                    userAdapter.Fill(Userdata);
+                }
+            }
+
+            if (Userdata.Rows.Count > 0)
+            {
+                foreach (DataRow row in Userdata.Rows)
+                {
+                    data.Add(new ListBoxItem() { Text = $"ID: {row["UserID"].ToString()} | UserName: {row["UserName"].ToString()}", Value = Convert.ToInt32(row["UserID"].ToString()) });
+                }
+                listBox1.DataSource = data;
+            }
+        }
+
+        private void updateLogList()
+        {
+            List<ListBoxItem> data = new List<ListBoxItem>();
+            listBox2.DisplayMember = "Text";
+            listBox2.ValueMember = "Value";
+
+            string LogsQuery = "SELECT * FROM logs WHERE UserID = @UserID";
+
+            DataTable Logdata = new DataTable();
+
+            using (SqlConnection con = Globals.GetOpenConnection())
+            {
+                using (SqlCommand command = new SqlCommand(LogsQuery, con))
+                {
+                    command.Parameters.AddWithValue("@UserID", listBox1.SelectedValue.ToString());
+
+                    SqlDataAdapter userAdapter = new SqlDataAdapter(command);
+                    userAdapter.Fill(Logdata);
+                }
+            }
+
+            if (Logdata.Rows.Count > 0)
+            {
+                foreach (DataRow row in Logdata.Rows)
+                {
+                    data.Add(new ListBoxItem() { Text = $"From: {row["WhereFrom"].ToString()} | To: {row["WhereTo"].ToString()}", Value = Convert.ToInt32(row["LogID"].ToString()) });
+                }
+                listBox2.DataSource = data;
+                listBox2.ClearSelected();
+            }
+            else
+            {
+                data.Clear();
+                listBox2.DataSource = data;
+                listBox2.ClearSelected();
+            }
         }
     }
 }
