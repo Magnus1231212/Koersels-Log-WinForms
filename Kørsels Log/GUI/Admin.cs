@@ -60,6 +60,7 @@ namespace Kørsels_Log
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            showUserActions();
             if (listBox1.SelectedIndex != -1)
             {
                 selectedUserID = Convert.ToInt32(listBox1.SelectedValue.ToString());
